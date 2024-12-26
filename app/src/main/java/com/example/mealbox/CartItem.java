@@ -1,24 +1,25 @@
 package com.example.mealbox;
 
-import android.os.Bundle;
+public class CartItem {
+    private String name;
+    private double price;
+    private int imageRes;
 
-import androidx.activity.EdgeToEdge;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
+    public CartItem(String name, double price, int imageRes) {
+        this.name = name;
+        this.price = price;
+        this.imageRes = imageRes;
+    }
 
-public class CartItem extends AppCompatActivity {
+    public String getName() {
+        return name;
+    }
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_cart_item);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
+    public double getPrice() {
+        return price;
+    }
+
+    public int getImageRes() {
+        return imageRes;
     }
 }
