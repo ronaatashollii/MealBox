@@ -1,24 +1,37 @@
 package com.example.mealbox;
 
-import android.os.Bundle;
 
-import androidx.activity.EdgeToEdge;
+import android.os.Bundle;
+import android.text.TextUtils;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 public class ResetPasswordActivity extends AppCompatActivity {
+
+    private EditText emailEditText;
+    private Button resetPasswordButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_reset_password);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
+
+        emailEditText = findViewById(R.id.emailEditText);
+        resetPasswordButton = findViewById(R.id.resetPasswordButton);
+
+        resetPasswordButton.setOnClickListener(view -> resetPassword());
+    }
+
+    private void resetPassword() {
+        String email = emailEditText.getText().toString().trim();
+
+        if (TextUtils.isEmpty(email)) {
+            Toast.makeText(this, "Please enter your email", Toast.LENGTH_SHORT).show();
+        } else {
+            // Firebase Password Reset Logic
+            Toast.makeText(this, "Password reset email sent!", Toast.LENGTH_SHORT).show();
+        }
     }
 }
