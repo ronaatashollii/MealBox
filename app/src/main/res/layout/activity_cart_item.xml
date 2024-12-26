@@ -1,61 +1,42 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="16dp">
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="8dp">
 
-    <ListView
-        android:id="@+id/cartListView"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1" />
+    <ImageView
+        android:id="@+id/ImageView"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/ic_launcher_background" />
 
-    <TextView
-        android:id="@+id/totalPriceTextView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Total Price: $0.00"
-        android:textSize="18sp"
-        android:gravity="center"
-        android:layout_marginTop="8dp" />
-
-    <RadioGroup
-        android:id="@+id/paymentMethodGroup"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
         android:orientation="vertical"
-        android:layout_marginTop="16dp">
+        android:paddingStart="8dp">
 
-        <RadioButton
-            android:id="@+id/cashPaymentButton"
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/NameTextView"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Pay with Cash" />
+            android:text="Item Name" />
 
-        <RadioButton
-            android:id="@+id/cardPaymentButton"
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/PriceTextView"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Pay with Card" />
-    </RadioGroup>
+            android:text="$0.00" />
+    </LinearLayout>
 
+    <!-- Butoni për fshirje -->
     <Button
-        android:id="@+id/orderButton"
-        android:layout_width="match_parent"
+        android:id="@+id/ItemButton"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Order"
-        android:backgroundTint="@android:color/holo_green_dark"
-        android:textColor="@android:color/white"
-        android:layout_marginTop="8dp" />
-
-
-    <Button
-        android:id="@+id/backToHomeButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Back to Home"
-        android:backgroundTint="@android:color/holo_blue_dark"
-        android:textColor="@android:color/white"
-        android:layout_marginTop="16dp" />
-
+        android:text="X"
+        android:backgroundTint="@android:color/holo_red_dark"
+        android:textColor="@android:color/white" />
 </LinearLayout>
