@@ -50,11 +50,10 @@ public class CartAdapter extends BaseAdapter {
 
         CartItem item = cartItems.get(position);
 
-        TextView itemNameTextView = convertView.findViewById(R.id.itemNameTextView);
-        TextView itemPriceTextView = convertView.findViewById(R.id.itemPriceTextView);
-        ImageView itemImageView = convertView.findViewById(R.id.itemImageView);
-        Button removeItemButton = convertView.findViewById(R.id.removeItemButton);
-
+        TextView itemNameTextView = convertView.findViewById(R.id.NameTextView);
+        TextView itemPriceTextView = convertView.findViewById(R.id.PriceTextView);
+        ImageView itemImageView = convertView.findViewById(R.id.ImageView);
+        Button removeItemButton = convertView.findViewById(R.id.ItemButton);
         itemNameTextView.setText(item.getName());
         itemPriceTextView.setText(String.format("$%.2f", item.getPrice()));
         itemImageView.setImageResource(item.getImageRes());
