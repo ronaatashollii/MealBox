@@ -1,24 +1,46 @@
 package com.example.mealbox;
 
+import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.activity.EdgeToEdge;
+import android.widget.Button;
+import android.widget.ListView;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
+
+import java.util.List;
 
 public class CartActivity extends AppCompatActivity {
+
+    private ListView cartListView;
+    private CartAdapter adapter;
+    private Button backToHomeButton;
+    private List<CartItem> cartItems;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_cart);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
+
+        cartListView = findViewById(R.id.cartListView);
+        backToHomeButton = findViewById(R.id.backToHomeButton);
+
+
+        cartItems = CartManager.getCartItems();
+
+
+        adapter = new CartAdapter(this, cartItems, new CartAdapter.OnRemoveClickListener() {
+            @Override
+            public void onRemoveClick(CartItem item) {
+                CartManager.removeCartItem(item);
+                adapter.updateData(CartManager.getCartItems());
+            }
+        });
+        cartListView.setAdapter(adapter);
+
+
+        backToHomeButton.setOnClickListener(v -> {
+            Intent intent = new Intent(CartActivity.this, HomeActivity.class);
+            startActivity(intent);
+            finish();
         });
     }
 }
