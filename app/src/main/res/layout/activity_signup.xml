@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#DB9A9A"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- Logo Image -->
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="100dp"
+            android:layout_height="80dp"
+            android:layout_marginTop="150dp"
+            android:layout_marginBottom="10dp"
+            app:srcCompat="@drawable/img" />
+
+        <!-- Sign Up Title -->
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:text="Sign Up"
+            android:textColor="#0F0E0E"
+            android:textSize="30sp" />
+
+        <!-- First Name EditText -->
+        <EditText
+            android:id="@+id/signupName"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginBottom="10dp"
+            android:background="#FFFFFF"
+            android:hint="First name"
+            android:inputType="text"
+            android:textColor="#000000" />
+
+        <!-- Last Name EditText -->
+        <EditText
+            android:id="@+id/signupSurname"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginBottom="10dp"
+            android:background="#FFFFFF"
+            android:hint="Last name"
+            android:inputType="text"
+            android:textColor="#000000" />
+
+        <!-- Email EditText -->
+        <EditText
+            android:id="@+id/signupEmail"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginBottom="10dp"
+            android:background="#FFFFFF"
+            android:hint="Email"
+            android:inputType="textEmailAddress"
+            android:textColor="#000000" />
+
+        <!-- Phone Number EditText -->
+        <EditText
+            android:id="@+id/signupPhone"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginBottom="10dp"
+            android:background="#FFFFFF"
+            android:hint="Phone number"
+            android:inputType="phone"
+            android:textColor="#000000" />
+
+        <!-- Password EditText -->
+        <EditText
+            android:id="@+id/signupPassword"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginBottom="10dp"
+            android:background="#FFFFFF"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:textColor="#000000" />
+
+        <!-- LinearLayout for buttons -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <!-- Sign Up Button -->
+            <Button
+                android:id="@+id/signup"
+                style="@style/CustomButtonStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_weight="1"
+                android:background="#FF6200EE"
+                android:text="Sign Up"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp" />
+
+            <!-- Back to Login Button -->
+            <Button
+                style="@style/CustomButtonStyle"
+                android:id="@+id/loginButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Login"
+                android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            android:background="#7A2626"
+            />
+
+        </LinearLayout>
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
