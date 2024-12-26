@@ -41,7 +41,7 @@
     <Button
         android:id="@+id/confirmPaymentButton"
         android:layout_width="match_parent"
-        android:layout_height="48dp"
+        android:layout_height="47dp"
         android:text="Confirm Payment"
         android:layout_marginTop="16dp"
         android:backgroundTint="@android:color/holo_blue_dark"
