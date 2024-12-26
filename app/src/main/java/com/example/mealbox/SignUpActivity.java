@@ -8,7 +8,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
-public class RegisterActivity extends AppCompatActivity {
+public class SignUpActivity extends AppCompatActivity {
 
     private EditText emailEditText, passwordEditText, confirmPasswordEditText;
     private Button registerButton;
@@ -16,12 +16,12 @@ public class RegisterActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register);
+        setContentView(R.layout.activity_signup);
 
-        emailEditText = findViewById(R.id.emailEditText);
-        passwordEditText = findViewById(R.id.passwordEditText);
-        confirmPasswordEditText = findViewById(R.id.confirmPasswordEditText);
-        registerButton = findViewById(R.id.registerButton);
+        emailEditText = findViewById(R.id.signupEmail);
+        passwordEditText = findViewById(R.id.signupPassword);
+        confirmPasswordEditText = findViewById(R.id.signupPassword);
+        registerButton = findViewById(R.id.signup);
 
         registerButton.setOnClickListener(view -> registerUser());
     }
@@ -40,7 +40,7 @@ public class RegisterActivity extends AppCompatActivity {
         } else {
             // Firebase Registration Logic
             Toast.makeText(this, "Registration successful!", Toast.LENGTH_SHORT).show();
-            startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
+            startActivity(new Intent(SignUpActivity.this, LoginActivity.class));
         }
     }
 
