@@ -32,7 +32,6 @@ android {
 }
 
 dependencies {
-
     implementation(libs.appcompat)
     implementation(libs.material)
     implementation(libs.activity)
@@ -41,6 +40,6 @@ dependencies {
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
     implementation("de.svenkubiak:jBCrypt:0.4.1")
-    implementation ("com.google.android.gms:play-services-maps:18.1.0")
-
+    implementation("com.google.android.gms:play-services-maps:18.1.0")
 }
+

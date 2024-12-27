@@ -59,9 +59,12 @@ public class LoginActivity extends AppCompatActivity {
         } else if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
             Toast.makeText(this, "Enter a valid email", Toast.LENGTH_SHORT).show();
         } else {
+            // If the login credentials are correct (here we are just checking format)
             Toast.makeText(this, "Login successful!", Toast.LENGTH_SHORT).show();
-            startActivity(new Intent(LoginActivity.this, HomePage.class));
-            finish();
+            // Navigate to HomePage activity
+            Intent intent = new Intent(LoginActivity.this, HomePage.class);
+            startActivity(intent);
+            finish();  // Finish the current activity (LoginActivity) so it doesn't stay in the back stack
         }
     }
 }
