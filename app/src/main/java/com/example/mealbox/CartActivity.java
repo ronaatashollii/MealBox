@@ -44,7 +44,7 @@ public class CartActivity extends AppCompatActivity {
         cartListView.setAdapter(adapter);
 
         backToHomeButton.setOnClickListener(v -> {
-            Intent intent = new Intent(CartActivity.this, HomeActivity.class);
+            Intent intent = new Intent(CartActivity.this, MenuActivity.class);
             startActivity(intent);
             finish();
         });
@@ -82,6 +82,35 @@ public class CartActivity extends AppCompatActivity {
                 Toast.makeText(this, "Please fill all card details!", Toast.LENGTH_SHORT).show();
             } else {
                 Toast.makeText(this, "Payment Successful!", Toast.LENGTH_SHORT).show();
+                dialog.dismiss();
+            }
+        });
+
+        dialog.show();
+    }
+
+    private void showOrderDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        LayoutInflater inflater = getLayoutInflater();
+        final View dialogView = inflater.inflate(R.layout.order_details, null);
+        builder.setView(dialogView);
+
+        final EditText nameEditText = dialogView.findViewById(R.id.nameEditText);
+        final EditText addressEditText = dialogView.findViewById(R.id.addressEditText);
+        final EditText phoneEditText = dialogView.findViewById(R.id.phoneEditText);
+        final Button confirmOrderButton = dialogView.findViewById(R.id.confirmOrderButton);
+
+        AlertDialog dialog = builder.create();
+
+        confirmOrderButton.setOnClickListener(v -> {
+            String name = nameEditText.getText().toString().trim();
+            String address = addressEditText.getText().toString().trim();
+            String phone = phoneEditText.getText().toString().trim();
+
+            if (name.isEmpty() || address.isEmpty() || phone.isEmpty()) {
+                Toast.makeText(this, "Please fill all details!", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(this, "Order placed successfully!", Toast.LENGTH_SHORT).show();
                 dialog.dismiss();
             }
         });

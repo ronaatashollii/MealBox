@@ -19,25 +19,6 @@
         android:gravity="center"
         android:layout_marginTop="8dp" />
 
-    <RadioGroup
-        android:id="@+id/paymentMethodGroup"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginTop="16dp">
-
-        <RadioButton
-            android:id="@+id/cashPaymentButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Pay with Cash" />
-
-        <RadioButton
-            android:id="@+id/cardPaymentButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Pay with Card" />
-    </RadioGroup>
 
     <Button
         android:id="@+id/orderButton"

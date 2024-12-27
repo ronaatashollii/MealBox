@@ -7,7 +7,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
-public class HomeActivity extends AppCompatActivity {
+public class MenuActivity extends AppCompatActivity {
 
     private ImageView burgerImageView1, burgerImageView;
     private Button viewCartButton;
@@ -15,7 +15,7 @@ public class HomeActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
+        setContentView(R.layout.activity_menu);
 
         burgerImageView1 = findViewById(R.id.burgerImageView1);
         burgerImageView = findViewById(R.id.burgerImageView);
@@ -42,7 +42,7 @@ public class HomeActivity extends AppCompatActivity {
 
 
     private void openCart() {
-        Intent intent = new Intent(HomeActivity.this, CartActivity.class);
+        Intent intent = new Intent(MenuActivity.this, CartActivity.class);
         startActivity(intent);
     }
 }
