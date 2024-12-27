@@ -47,7 +47,7 @@ public class SignUpActivity extends AppCompatActivity {
         String hashedPassword = hashPasswordWithSalt(password);
 
         // Proceed with registration using the hashed password
-        Toast.makeText(this, "Registration successful!", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Registration successful!!", Toast.LENGTH_SHORT).show();
         startActivity(new Intent(SignUpActivity.this, LoginActivity.class));
     }
 
