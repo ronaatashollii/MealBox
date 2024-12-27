@@ -60,7 +60,7 @@
             android:id="@+id/burgerImageView1"
             android:layout_width="80dp"
             android:layout_height="80dp"
-            android:src="@drawable/TexasDoubleWhopper"
+            android:src="@drawable/texas_double_whopper"
             android:contentDescription="Burger Image" />
 
         <LinearLayout
@@ -71,7 +71,7 @@
             android:paddingStart="8dp">
 
             <TextView
-                android:id="@+id/pizzaNameTextView"
+                android:id="@+id/NameTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Texas Whopper"

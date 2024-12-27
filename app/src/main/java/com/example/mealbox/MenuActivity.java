@@ -27,7 +27,7 @@ public class MenuActivity extends AppCompatActivity {
         });
 
         findViewById(R.id.addBurgerToCartButton).setOnClickListener(v -> {
-            addToCart("Pizza", 8.99, R.drawable.whopper_with_cheese);
+            addToCart("Burger", 8.99, R.drawable.texas_double_whopper);
         });
 
         // Hapja e shportës manualisht
