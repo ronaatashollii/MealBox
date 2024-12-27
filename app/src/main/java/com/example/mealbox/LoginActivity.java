@@ -44,7 +44,7 @@ public class LoginActivity extends AppCompatActivity {
         });
 
         forgotPasswordButton.setOnClickListener(view -> {
-            Intent intent = new Intent(LoginActivity.this, ResetPasswordActivity.class);
+            Intent intent = new Intent(LoginActivity.this, ForgotPasswordActivity.class);
             startActivity(intent);
             overridePendingTransition(R.anim.slide_up, R.anim.fade_out);
         });

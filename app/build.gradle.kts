@@ -32,6 +32,10 @@ android {
 }
 
 dependencies {
+    implementation ("com.sun.mail:android-mail:1.6.5")
+    implementation ("com.sun.mail:android-activation:1.6.5")
+    implementation("de.svenkubiak:jBCrypt:0.4.1")
+    implementation("com.google.android.gms:play-services-maps:18.1.0")
     implementation(libs.appcompat)
     implementation(libs.material)
     implementation(libs.activity)
@@ -39,7 +43,4 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
-    implementation("de.svenkubiak:jBCrypt:0.4.1")
-    implementation("com.google.android.gms:play-services-maps:18.1.0")
 }
-
