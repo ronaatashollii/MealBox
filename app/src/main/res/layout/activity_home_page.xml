@@ -36,7 +36,7 @@
         android:layout_marginBottom="40dp"
         android:gravity="center"
         android:text="Welcome to Our Cozy Food Paradise!"
-        android:textColor="#666666"
+        android:textColor="#444444"
         android:textSize="18sp" />
 
     <!-- Navigation buttons -->
@@ -56,7 +56,7 @@
             android:background="#D4C8E4"
             android:padding="12dp"
             android:text="Home"
-            android:textColor="#FFFFFF" />
+            android:textColor="#000000" />
 
         <Button
             android:id="@+id/menuButton"
