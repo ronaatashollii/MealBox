@@ -1,5 +1,14 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <!-- Ngjyrat -->
+    <color name="black">#000000</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="white">#FFFFFF</color>
+
+    <!-- Stilet -->
+    <style name="CustomButtonStyle">
+        <item name="android:background">@color/purple_500</item> <!-- Ngjyra e sfondit -->
+        <item name="android:textColor">@color/white</item> <!-- Ngjyra e tekstit -->
+        <item name="android:padding">12dp</item> <!-- Padding -->
+        <item name="android:layout_margin">8dp</item> <!-- Margjina -->
+    </style>
 </resources>
