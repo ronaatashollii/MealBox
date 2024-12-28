@@ -7,60 +7,63 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
-    <application
-        android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
-        android:theme="@style/Theme.MealBox">
+        <application
+            android:allowBackup="true"
+            android:icon="@mipmap/ic_launcher"
+            android:label="@string/app_name"
+            android:roundIcon="@mipmap/ic_launcher_round"
+            android:supportsRtl="true"
+            android:theme="@style/Theme.MealBox">
 
-        <activity
-            android:name=".HomePage"
-            android:exported="false" />
-        <activity
-            android:name=".LoginActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            <!-- Ekrani i parë (Splash Screen / MainActivity) -->
+            <activity
+                android:name=".MainActivity"
+                android:exported="true">
+                <intent-filter>
+                    <action android:name="android.intent.action.MAIN" />
+                    <category android:name="android.intent.category.LAUNCHER" />
+                </intent-filter>
+            </activity>
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".MenuActivity"
-            android:exported="true" />
-        <activity
-            android:name=".CartActivity"
-            android:exported="true" />
-        <activity
-            android:name=".ProfilActivity"
-            android:exported="true" />
-        <activity
-            android:name=".SignUpActivity"
-            android:exported="true" />
-        <activity
-            android:name=".ForgotPasswordActivity"
-            android:exported="true" />
-        <activity
-            android:name=".MainActivity"
-            android:exported="true" />
-        <activity
-            android:name=".VerifyCodeActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            <!-- Aktiviteti i Login -->
+            <activity
+                android:name=".LoginActivity"
+                android:exported="false" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".ResetPasswordActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            <!-- Aktiviteti për Sign Up -->
+            <activity
+                android:name=".SignUpActivity"
+                android:exported="false" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-    </application>
+            <!-- Aktiviteti për Menu -->
+            <activity
+                android:name=".MenuActivity"
+                android:exported="false" />
 
-</manifest>
+            <!-- Aktiviteti për Profil -->
+            <activity
+                android:name=".ProfilActivity"
+                android:exported="false" />
+
+            <!-- Aktiviteti për shportë -->
+            <activity
+                android:name=".CartActivity"
+                android:exported="false" />
+
+            <!-- Aktiviteti për verifikim të kodit (VerifyCodeActivity) -->
+            <activity
+                android:name=".VerifyCodeActivity"
+                android:exported="false" />
+
+            <!-- Aktiviteti për Forgot Password -->
+            <activity
+                android:name=".ForgotPasswordActivity"
+                android:exported="false" />
+
+            <!-- Aktiviteti për faqen kryesore (HomePage) -->
+            <activity
+                android:name=".HomePage"
+                android:exported="false" />
+        </application>
+
+    </manifest>

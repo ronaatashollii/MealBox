@@ -10,9 +10,9 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
 public class EmailSender {
-    private static String adminEmail = "elona.fetahu@student.uni-pr.edu"; // replace this with your email
+    private static String adminEmail = "agnesamaniii@gmail.com"; // replace this with your email
 
-    private static String AppPassword = "nhndqamgavmojwwm"; // generate an app password with google
+    private static String AppPassword = "vehisvlelydqwvwp"; // generate an app password with google
 
 
 
