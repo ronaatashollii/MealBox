@@ -1,10 +1,12 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
+    android:background="#DB9A9A"
+    android:gravity="center"
     android:orientation="vertical"
     android:padding="16dp">
 
-    <EditText
+<EditText
         android:id="@+id/nameEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -16,26 +18,26 @@
         android:id="@+id/addressEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:hint="Your Address"
         android:inputType="text"
-        android:padding="12dp"
-        android:layout_marginTop="8dp" />
+        android:padding="12dp" />
 
     <EditText
         android:id="@+id/phoneEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:hint="Your Phone Number"
         android:inputType="phone"
-        android:padding="12dp"
-        android:layout_marginTop="8dp" />
+        android:padding="12dp" />
 
     <RadioGroup
         android:id="@+id/paymentMethodGroup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginTop="16dp">
+        android:layout_marginTop="16dp"
+        android:orientation="vertical">
 
         <RadioButton
             android:id="@+id/cashPaymentButton"
@@ -53,10 +55,12 @@
 
     <Button
         android:id="@+id/confirmOrderButton"
+        style="@style/CustomButtonStyle"
         android:layout_width="match_parent"
-        android:layout_height="48dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:padding="10dp"
         android:text="Confirm Order"
-        android:layout_marginTop="16dp"
-        android:backgroundTint="@android:color/holo_green_dark"
-        android:textColor="@android:color/white" />
+        android:textSize="16sp" />
 </LinearLayout>
