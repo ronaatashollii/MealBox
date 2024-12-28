@@ -3,22 +3,15 @@ package com.example.mealbox;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.content.Context;
+import android.os.Build;
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NotificationCompat;
 
-import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.OnMapReadyCallback;
-import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MarkerOptions;
-
-import android.os.Build;
 import android.app.NotificationChannel;
 
-public class HomePage extends AppCompatActivity implements OnMapReadyCallback {
+public class HomePage extends AppCompatActivity {
 
     private static final String CHANNEL_ID = "welcome_channel";
 
@@ -40,25 +33,8 @@ public class HomePage extends AppCompatActivity implements OnMapReadyCallback {
             notificationManager.createNotificationChannel(channel);
         }
 
-        // Initialize map fragment
-        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
-                .findFragmentById(R.id.mapFragment);
-        if (mapFragment != null) {
-            mapFragment.getMapAsync(this);
-        }
-
         // Show a welcome notification when the homepage is loaded
         showWelcomeNotification();
-    }
-
-    @Override
-    public void onMapReady(@NonNull GoogleMap googleMap) {
-        // Set a marker on a specific location
-        LatLng restaurantLocation = new LatLng(40.7128, -74.0060); // Example coordinates
-        googleMap.addMarker(new MarkerOptions()
-                .position(restaurantLocation)
-                .title("Our Restaurant"));
-        googleMap.moveCamera(com.google.android.gms.maps.CameraUpdateFactory.newLatLngZoom(restaurantLocation, 15));
     }
 
     private void showWelcomeNotification() {

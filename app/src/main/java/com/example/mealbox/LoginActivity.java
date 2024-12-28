@@ -38,9 +38,9 @@ public class LoginActivity extends AppCompatActivity {
         loginButton.setOnClickListener(view -> loginUser());
 
         signup.setOnClickListener(view -> {
-            Intent intent = new Intent(LoginActivity.this, SignUpActivity.class);
+            Intent intent = new Intent(LoginActivity.this, HomePage.class);
             startActivity(intent);
-            overridePendingTransition(R.anim.zoom_in, R.anim.fade_out);
+            overridePendingTransition(R.anim.zoom_in, R.anim.fade_in);
         });
 
         forgotPasswordButton.setOnClickListener(view -> {
@@ -59,8 +59,14 @@ public class LoginActivity extends AppCompatActivity {
         } else if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
             Toast.makeText(this, "Enter a valid email", Toast.LENGTH_SHORT).show();
         } else {
+            // Show login success toast
             Toast.makeText(this, "Login successful!", Toast.LENGTH_SHORT).show();
-            startActivity(new Intent(LoginActivity.this, HomePage.class));
+
+            // Transition to HomePage activity
+            Intent intent = new Intent(LoginActivity.this, HomePage.class);
+            startActivity(intent);
+
+            // Properly finish LoginActivity so it won't be in the back stack
             finish();
         }
     }
