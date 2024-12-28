@@ -49,6 +49,7 @@ public class SignUpActivity extends AppCompatActivity {
         // Proceed with registration using the hashed password
         Toast.makeText(this, "Registration successful!!", Toast.LENGTH_SHORT).show();
         startActivity(new Intent(SignUpActivity.this, LoginActivity.class));
+
     }
 
     private boolean validateFields(String name, String surname, String email, String phone, String password) {

@@ -38,7 +38,7 @@ public class LoginActivity extends AppCompatActivity {
         loginButton.setOnClickListener(view -> loginUser());
 
         signup.setOnClickListener(view -> {
-            Intent intent = new Intent(LoginActivity.this, HomePage.class);
+            Intent intent = new Intent(LoginActivity.this, SignUpActivity.class);
             startActivity(intent);
             overridePendingTransition(R.anim.zoom_in, R.anim.fade_in);
         });
