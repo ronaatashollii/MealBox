@@ -6,14 +6,6 @@
     android:orientation="vertical"
     android:padding="16dp">
 
-<TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Enter Card Details"
-        android:textSize="18sp"
-        android:gravity="center"
-        android:paddingBottom="16dp" />
-
     <EditText
         android:id="@+id/cardNumberEditText"
         android:layout_width="match_parent"
@@ -43,7 +35,7 @@
     <Button
         android:id="@+id/confirmPaymentButton"
         android:layout_width="match_parent"
-        android:layout_height="47dp"
+        android:layout_height="wrap_content"
         android:text="Confirm Payment"
         android:layout_marginTop="16dp"
         android:backgroundTint="@android:color/holo_blue_dark"

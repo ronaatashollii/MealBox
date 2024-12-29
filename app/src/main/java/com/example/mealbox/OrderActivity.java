@@ -31,10 +31,12 @@ public class OrderActivity extends AppCompatActivity {
         phoneEditText = findViewById(R.id.phoneEditText);
         confirmOrderButton = findViewById(R.id.confirmOrderButton);
 
-        // Listener for the RadioGroup
+        // Listener for RadioGroup
         paymentMethodGroup.setOnCheckedChangeListener((group, checkedId) -> {
             if (checkedId == R.id.cardPaymentButton) {
-                // Navigate to CardDetailsActivity
+                // Navigate to CartPaymentActivity when card payment is selected
+                Intent intent = new Intent(OrderActivity.this, CartPaymentActivity.class);
+                startActivity(intent);
             }
         });
 

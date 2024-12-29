@@ -8,9 +8,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.EditText;
 
 import java.util.List;
 
@@ -34,14 +31,12 @@ public class CartActivity extends AppCompatActivity {
 
         cartItems = CartManager.getCartItems();
 
-        adapter = new CartAdapter(this, cartItems, new CartAdapter.OnRemoveClickListener() {
-            @Override
-            public void onRemoveClick(CartItem item) {
-                CartManager.removeCartItem(item);
-                adapter.updateData(CartManager.getCartItems());
-                updateTotalPrice();
-            }
+        adapter = new CartAdapter(this, cartItems, item -> {
+            CartManager.removeCartItem(item);
+            adapter.updateData(CartManager.getCartItems());
+            updateTotalPrice();
         });
+
         cartListView.setAdapter(adapter);
 
         backToHomeButton.setOnClickListener(v -> {
@@ -50,14 +45,8 @@ public class CartActivity extends AppCompatActivity {
             finish();
         });
 
-        orderButton.setOnClickListener(v -> showOrderDialog());
+        orderButton.setOnClickListener(v -> navigateToOrderActivity());
 
-        updateTotalPrice();
-    }
-
-    private void updateCartList() {
-        cartItems = CartManager.getCartItems();
-        adapter.updateData(cartItems);
         updateTotalPrice();
     }
 
@@ -69,34 +58,12 @@ public class CartActivity extends AppCompatActivity {
         totalPriceTextView.setText(String.format("Total Price: $%.2f", total));
     }
 
-
-
-    private void showOrderDialog() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        LayoutInflater inflater = getLayoutInflater();
-        final View dialogView = inflater.inflate(R.layout.activity_order, null);
-        builder.setView(dialogView);
-
-        final EditText nameEditText = dialogView.findViewById(R.id.nameEditText);
-        final EditText addressEditText = dialogView.findViewById(R.id.addressEditText);
-        final EditText phoneEditText = dialogView.findViewById(R.id.phoneEditText);
-        final Button confirmOrderButton = dialogView.findViewById(R.id.confirmOrderButton);
-
-        final AlertDialog dialog = builder.create();
-
-        confirmOrderButton.setOnClickListener(v -> {
-            String name = nameEditText.getText().toString().trim();
-            String address = addressEditText.getText().toString().trim();
-            String phone = phoneEditText.getText().toString().trim();
-
-            if (name.isEmpty() || address.isEmpty() || phone.isEmpty()) {
-                Toast.makeText(CartActivity.this, "Please fill all details!", Toast.LENGTH_SHORT).show();
-            } else {
-                Toast.makeText(CartActivity.this, "Order placed successfully!", Toast.LENGTH_SHORT).show();
-                dialog.dismiss();
-            }
-        });
-
-        dialog.show();
+    private void navigateToOrderActivity() {
+        if (cartItems.isEmpty()) {
+            Toast.makeText(this, "Your cart is empty. Add items before ordering.", Toast.LENGTH_SHORT).show();
+        } else {
+            Intent intent = new Intent(CartActivity.this, OrderActivity.class);
+            startActivity(intent);
+        }
     }
 }

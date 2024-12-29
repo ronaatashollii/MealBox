@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.mealbox">
-
     <!-- Required permissions -->
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -66,9 +65,11 @@
         <activity
             android:name=".HomePage"
             android:exported="true" />
+
+        <!-- Contact Page Activity -->
         <activity
             android:name=".ContactPage"
-            android:exported="false"/>
+            android:exported="false" />
 
         <!-- Reset Password Activity -->
         <activity
@@ -80,7 +81,9 @@
             android:name=".OrderActivity"
             android:exported="true" />
 
-
+        <!-- Cart Payment Activity -->
+        <activity
+            android:name=".CartPaymentActivity"
+            android:exported="true" />
     </application>
-
 </manifest>
