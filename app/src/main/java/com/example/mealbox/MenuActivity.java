@@ -5,6 +5,10 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
+
+
+
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,12 +19,18 @@ import java.util.Map;
 public class MenuActivity extends AppCompatActivity {
     private Map<Integer, String> buttonToProductMap; // Map buttons to product names
     private Map<String, ProductDetails> productDetailsMap; // Store product details
-
+    private ImageButton viewCartButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
 
+        viewCartButton = findViewById(R.id.viewButton);
+
+        viewCartButton.setOnClickListener(v -> {
+            Intent intent = new Intent(MenuActivity.this, CartActivity.class);
+            startActivity(intent);
+        });
         buttonToProductMap = new HashMap<>();
         productDetailsMap = new HashMap<>();
 
@@ -53,6 +63,8 @@ public class MenuActivity extends AppCompatActivity {
         // Navigation buttons setup
         setupNavigationButtons();
     }
+
+
 
     private void setupNavigationButtons() {
         Button homeButton = findViewById(R.id.homeButton);

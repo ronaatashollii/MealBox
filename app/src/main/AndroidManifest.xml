@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.mealbox">
-    <!-- Lejet e nevojshme për dërgimin e email-it dhe përdorimin e internetit -->
-    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+
+    <!-- Required permissions -->
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" /> <!-- Leje për kontrollin e lidhjes me internetin -->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
 
     <application
         android:allowBackup="true"
@@ -16,7 +17,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MealBox">
 
-        <!-- Ekrani i parë (Splash Screen / MainActivity) -->
+        <!-- Main Activity (Launcher) -->
         <activity
             android:name=".MainActivity"
             android:exported="true">
@@ -26,50 +27,57 @@
             </intent-filter>
         </activity>
 
-        <!-- Aktiviteti i Login -->
+        <!-- Login Activity -->
         <activity
             android:name=".LoginActivity"
             android:exported="false" />
 
-        <!-- Aktiviteti për Sign Up -->
+        <!-- Sign Up Activity -->
         <activity
             android:name=".SignUpActivity"
             android:exported="false" />
 
-        <!-- Aktiviteti për Menu -->
+        <!-- Menu Activity -->
         <activity
             android:name=".MenuActivity"
             android:exported="true" />
 
-        <!-- Aktiviteti për Profil -->
+        <!-- Profile Activity -->
         <activity
             android:name=".ProfilActivity"
             android:exported="false" />
 
-        <!-- Aktiviteti për shportë -->
+        <!-- Cart Activity -->
         <activity
             android:name=".CartActivity"
             android:exported="true" />
 
-        <!-- Aktiviteti për verifikim të kodit (VerifyCodeActivity) -->
+        <!-- Verify Code Activity -->
         <activity
             android:name=".VerifyCodeActivity"
             android:exported="false" />
 
-        <!-- Aktiviteti për Forgot Password -->
+        <!-- Forgot Password Activity -->
         <activity
             android:name=".ForgotPasswordActivity"
             android:exported="false" />
 
-        <!-- Aktiviteti për faqen kryesore (HomePage) -->
+        <!-- Home Page Activity -->
         <activity
             android:name=".HomePage"
             android:exported="true" />
 
-        <!-- Aktiviteti për ResetPasswordActivity -->
+        <!-- Reset Password Activity -->
         <activity
             android:name=".ResetPasswordActivity"
             android:exported="false" />
 
+        <!-- Order Activity -->
+        <activity
+            android:name=".OrderActivity"
+            android:exported="true" />
+        
+
     </application>
+
 </manifest>
