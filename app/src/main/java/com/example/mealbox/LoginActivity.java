@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 public class LoginActivity extends AppCompatActivity {
@@ -38,15 +39,15 @@ public class LoginActivity extends AppCompatActivity {
         loginButton.setOnClickListener(view -> loginUser());
 
         signup.setOnClickListener(view -> {
-            Intent intent = new Intent(LoginActivity.this, HomePage.class);
+            Intent intent = new Intent(LoginActivity.this, SignUpActivity.class);
             startActivity(intent);
-            overridePendingTransition(R.anim.zoom_in, R.anim.fade_in);
+            overridePendingTransition(R.anim.slide_left, R.anim.fade_out); // Animacion për Signup
         });
 
         forgotPasswordButton.setOnClickListener(view -> {
             Intent intent = new Intent(LoginActivity.this, ForgotPasswordActivity.class);
             startActivity(intent);
-            overridePendingTransition(R.anim.slide_up, R.anim.fade_out);
+            overridePendingTransition(R.anim.slide_left, R.anim.fade_out); // Animacion për Forgot Password
         });
     }
 
@@ -62,9 +63,12 @@ public class LoginActivity extends AppCompatActivity {
             // Show login success toast
             Toast.makeText(this, "Login successful!", Toast.LENGTH_SHORT).show();
 
-            // Transition to HomePage activity
+            // Transition to HomePage activity with animation
             Intent intent = new Intent(LoginActivity.this, HomePage.class);
             startActivity(intent);
+
+            // Apply animation for transition
+            overridePendingTransition(R.anim.slide_left, R.anim.fade_out);
 
             // Properly finish LoginActivity so it won't be in the back stack
             finish();
