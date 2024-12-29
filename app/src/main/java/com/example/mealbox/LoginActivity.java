@@ -23,29 +23,27 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        // Inicializimi i komponentëve të UI
+        // Initialize UI components
         emailEditText = findViewById(R.id.emailEditText);
         passwordEditText = findViewById(R.id.passwordEditText);
         loginButton = findViewById(R.id.loginButton);
         signup = findViewById(R.id.signUpText);
         forgotPasswordButton = findViewById(R.id.forgotPasswordButton);
 
-        // Animimi i logos
+        // Animation for Logo
         Animation fadeIn = AnimationUtils.loadAnimation(this, R.anim.fade_in);
         findViewById(R.id.logoImage).startAnimation(fadeIn);
 
-        // Përdorimi i listener për butonin e login
+        // Set listeners for buttons
         loginButton.setOnClickListener(view -> loginUser());
 
         signup.setOnClickListener(view -> {
-            // Kur përdoruesi klikoni regjistrohu
-            Intent intent = new Intent(LoginActivity.this, SignUpActivity.class);
+            Intent intent = new Intent(LoginActivity.this, HomePage.class);
             startActivity(intent);
             overridePendingTransition(R.anim.zoom_in, R.anim.fade_in);
         });
 
         forgotPasswordButton.setOnClickListener(view -> {
-            // Kur përdoruesi klikoni harroi fjalëkalimin
             Intent intent = new Intent(LoginActivity.this, ForgotPasswordActivity.class);
             startActivity(intent);
             overridePendingTransition(R.anim.slide_up, R.anim.fade_out);
@@ -61,14 +59,14 @@ public class LoginActivity extends AppCompatActivity {
         } else if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
             Toast.makeText(this, "Enter a valid email", Toast.LENGTH_SHORT).show();
         } else {
-            // Nëse login është i suksesshëm
+            // Show login success toast
             Toast.makeText(this, "Login successful!", Toast.LENGTH_SHORT).show();
 
-            // Kaloni në HomePage
+            // Transition to HomePage activity
             Intent intent = new Intent(LoginActivity.this, HomePage.class);
             startActivity(intent);
 
-            // Mbyllni LoginActivity për të mos lejuar kthimin
+            // Properly finish LoginActivity so it won't be in the back stack
             finish();
         }
     }
