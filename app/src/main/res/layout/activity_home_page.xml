@@ -4,95 +4,94 @@
     android:layout_height="match_parent"
     android:background="#000000">
 
-    <!-- Pjesa e titullit FAST FOOD e vendosur afër logos -->
+    <!-- Teksti i titullit -->
     <TextView
         android:id="@+id/fastFoodText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="18dp"
-        android:layout_toEndOf="@id/logoImage"
-    android:layout_marginStart="16dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="48dp"
     android:text="FAST FOOD"
     android:textColor="#FFD700"
     android:textSize="36sp"
-    android:textStyle="bold"
-    tools:layout_marginRight="30dp" />
+    android:textStyle="bold" />
 
     <!-- Logo e hamburgerit -->
     <ImageView
         android:id="@+id/logoImage"
-        android:layout_width="match_parent"
-        android:layout_height="148dp"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
         android:layout_below="@id/fastFoodText"
-        android:layout_marginTop="149dp"
-        android:layout_marginBottom="20dp"
-        android:contentDescription="Burger Logo"
-        android:src="@drawable/img" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="32dp"
+    android:contentDescription="Burger Logo"
+    android:src="@drawable/img" />
 
-    <!-- Pjesa e përshkrimit -->
+    <!-- Teksti i përshkrimit -->
     <TextView
         android:id="@+id/descriptionText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/logoImage"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="30dp"
-        android:gravity="center"
-        android:text="Flavors You’ll Crave! Enjoy fresh and tasty burgers every day."
-        android:textColor="#FFFFFF"
-        android:textSize="16sp" />
-
-    <!-- LinearLayout për butonat Home, Menu dhe Contact Us -->
-    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="horizontal"
+        android:layout_below="@id/logoImage"
+        android:layout_marginTop="32dp"
+    android:layout_marginHorizontal="16dp"
+    android:gravity="center"
+    android:text="Flavors You’ll Crave! Enjoy fresh and tasty burgers every day."
+    android:textColor="#FFFFFF"
+    android:textSize="16sp" />
+
+    <!-- LinearLayout për butonat -->
+    <LinearLayout
+        android:id="@+id/buttonLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_below="@id/descriptionText"
-        android:layout_centerHorizontal="true"
-        android:weightSum="3">
+        android:layout_marginTop="40dp"
+    android:orientation="horizontal"
+    android:gravity="center"
+    android:weightSum="3">
 
-        <Button
-            android:id="@+id/homeButton"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:layout_weight="1"
-            android:backgroundTint="#FFD700"
-            android:text="Home"
-            android:textColor="#FFFFFF" />
+    <Button
+        android:id="@+id/homeButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_marginHorizontal="8dp"
+        android:backgroundTint="#FFD700"
+        android:text="Home"
+        android:textColor="#FFFFFF" />
 
-        <Button
-            android:id="@+id/menuButton"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_marginEnd="8dp"
-            android:backgroundTint="#FF4500"
-            android:text="Menu"
-            android:textColor="#FFFFFF" />
+    <Button
+        android:id="@+id/menuButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_marginHorizontal="8dp"
+        android:backgroundTint="#FF4500"
+        android:text="Menu"
+        android:textColor="#FFFFFF" />
 
-        <Button
-            android:id="@+id/contactButton"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:backgroundTint="#32CD32"
-            android:text="Contact Us"
-            android:textColor="#FFFFFF" />
-    </LinearLayout>
+    <Button
+        android:id="@+id/contactButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_marginHorizontal="8dp"
+        android:backgroundTint="#32CD32"
+        android:text="Contact Us"
+        android:textColor="#FFFFFF" />
+</LinearLayout>
 
-    <!-- Butoni i logout-it në fund të ekranit -->
+    <!-- Ikona e logout-it në fund të ekranit -->
     <ImageView
         android:id="@+id/logoutButton"
         android:layout_width="40dp"
         android:layout_height="40dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="16dp"
         android:src="@drawable/img_3"
-        android:tint="#FFFFFF"
-    android:layout_alignParentBottom="true"
-    android:layout_alignParentEnd="true"
-    android:layout_marginBottom="20dp"
-    android:layout_marginEnd="20dp" />
+        android:tint="#FFFFFF" />
 
-</RelativeLayout>
+    </RelativeLayout>

@@ -66,6 +66,9 @@
         <activity
             android:name=".HomePage"
             android:exported="true" />
+        <activity
+            android:name=".ContactPage"
+            android:exported="false"/>
 
         <!-- Reset Password Activity -->
         <activity

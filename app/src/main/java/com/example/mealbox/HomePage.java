@@ -1,15 +1,18 @@
 package com.example.mealbox;
 
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.content.Intent;
+import android.media.RingtoneManager;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NotificationCompat;
-import android.app.NotificationChannel;
-import android.app.NotificationManager;
 
 public class HomePage extends AppCompatActivity {
 
@@ -32,20 +35,29 @@ public class HomePage extends AppCompatActivity {
         }
 
         showWelcomeNotification();
+        showLoginMessage();
         setupNavigationButtons();
         setupLogoutButton(); // Kalloni funksionin për butonin e logout-it
     }
 
     private void showWelcomeNotification() {
+        Uri soundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION); // Zhurma e paracaktuar
+
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this, CHANNEL_ID)
                 .setSmallIcon(R.drawable.img_2)
                 .setContentTitle("Welcome to MealBox!")
                 .setContentText("Get ready for the ultimate burger experience!")
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT)
-                .setAutoCancel(true);
+                .setAutoCancel(true)
+                .setSound(soundUri);  // Zhurma në notifikim
 
         NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
         notificationManager.notify(1, builder.build());
+    }
+
+    private void showLoginMessage() {
+        // Shfaqim një mesazh Toast pas hapjes së HomePage
+        Toast.makeText(HomePage.this, "Welcome to MealBox! Enjoy your experience.", Toast.LENGTH_LONG).show();
     }
 
     private void setupNavigationButtons() {
@@ -64,7 +76,7 @@ public class HomePage extends AppCompatActivity {
         });
 
         contactButton.setOnClickListener(v -> {
-            Intent intent = new Intent(HomePage.this, ContactPage.class);
+            Intent intent = new Intent(HomePage.this, ContactPage.class); // Sigurohu që ContactPage është deklaruar në manifest
             startActivity(intent);
         });
     }
