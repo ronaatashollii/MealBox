@@ -35,8 +35,6 @@ public class OrderActivity extends AppCompatActivity {
         paymentMethodGroup.setOnCheckedChangeListener((group, checkedId) -> {
             if (checkedId == R.id.cardPaymentButton) {
                 // Navigate to CardDetailsActivity
-                Intent intent = new Intent(OrderActivity.this, CardDetailsActivity.class);
-                startActivity(intent);
             }
         });
 

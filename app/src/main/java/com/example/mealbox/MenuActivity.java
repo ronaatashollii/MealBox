@@ -7,9 +7,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 
-
-
-
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -19,7 +16,9 @@ import java.util.Map;
 public class MenuActivity extends AppCompatActivity {
     private Map<Integer, String> buttonToProductMap; // Map buttons to product names
     private Map<String, ProductDetails> productDetailsMap; // Store product details
+    private Map<String, Integer> productImageMap; // Store product image resources
     private ImageButton viewCartButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,10 +30,12 @@ public class MenuActivity extends AppCompatActivity {
             Intent intent = new Intent(MenuActivity.this, CartActivity.class);
             startActivity(intent);
         });
+
         buttonToProductMap = new HashMap<>();
         productDetailsMap = new HashMap<>();
+        productImageMap = new HashMap<>();
 
-        // Button IDs and product names mapping
+        // Button IDs and corresponding products
         int[] buttonIds = {
                 R.id.myButton1, R.id.myButton2, R.id.myButton3, R.id.myButton4,
                 R.id.myButton5, R.id.myButton6, R.id.myButton7, R.id.myButton8,
@@ -47,24 +48,53 @@ public class MenuActivity extends AppCompatActivity {
                 "Mega Cheese Burger", "Golden Burger"
         };
 
+        // Fill product image map
+        productImageMap.put("Chicken Burger", R.drawable.chickenburger);
+        productImageMap.put("BBQ Burger", R.drawable.bbq);
+        productImageMap.put("Beef Burger", R.drawable.beef);
+        productImageMap.put("Chicken Sandwich", R.drawable.chickensandwich);
+        productImageMap.put("Chicken Spinner", R.drawable.chickenspinner);
+        productImageMap.put("Crispy Onion Burger", R.drawable.crispyonionburger);
+        productImageMap.put("Double Crispy Onion", R.drawable.doublecrispyonion);
+        productImageMap.put("Giant Beef", R.drawable.giantbeef);
+        productImageMap.put("Mega Cheese Burger", R.drawable.megacheeseburger);
+        productImageMap.put("Golden Burger", R.drawable.goldenburger);
 
+        // Map buttons to products and set product details
+        for (int i = 0; i < buttonIds.length; i++) {
+            buttonToProductMap.put(buttonIds[i], productNames[i]);
+            productDetailsMap.put(productNames[i], new ProductDetails(
+                    productNames[i] + " Description",
+                    "Ingredients for " + productNames[i]
+            ));
+        }
 
-        // Set listeners for product buttons
+        // Set listeners for buttons
         for (int id : buttonIds) {
             Button button = findViewById(id);
-
             if (button != null) {
-                button.setOnClickListener(new ButtonClickListener());
+                button.setOnClickListener(view -> {
+                    String productName = buttonToProductMap.get(id);
+                    if (productName != null) {
+                        Integer imageRes = productImageMap.get(productName);
+                        if (imageRes != null) {
+                            CartManager.addCartItem(new CartItem(productName, 9.99, imageRes));
+                            Log.d("MenuActivity", productName + " added to cart.");
+                        } else {
+                            Log.e("MenuActivity", "Image resource not found for: " + productName);
+                        }
+                    } else {
+                        Log.e("MenuActivity", "Unknown product for button ID: " + id);
+                    }
+                });
             } else {
                 Log.e("MenuActivity", "Button with ID " + id + " not found in layout.");
             }
         }
 
-        // Navigation buttons setup
+        // Setup navigation buttons
         setupNavigationButtons();
     }
-
-
 
     private void setupNavigationButtons() {
         Button homeButton = findViewById(R.id.homeButton);

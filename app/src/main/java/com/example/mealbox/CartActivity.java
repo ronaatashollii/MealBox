@@ -55,6 +55,12 @@ public class CartActivity extends AppCompatActivity {
         updateTotalPrice();
     }
 
+    private void updateCartList() {
+        cartItems = CartManager.getCartItems();
+        adapter.updateData(cartItems);
+        updateTotalPrice();
+    }
+
     private void updateTotalPrice() {
         double total = 0.0;
         for (CartItem item : cartItems) {
@@ -62,6 +68,8 @@ public class CartActivity extends AppCompatActivity {
         }
         totalPriceTextView.setText(String.format("Total Price: $%.2f", total));
     }
+
+
 
     private void showOrderDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
