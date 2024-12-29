@@ -14,7 +14,7 @@ public class CartManager {
     }
 
     public static List<CartItem> getCartItems() {
-        return new ArrayList<>(cartItems); // Jep një kopje të listës për të shmangur ndryshimet e jashtme
+        return new ArrayList<>(cartItems);
     }
 }
 

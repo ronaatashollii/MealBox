@@ -23,8 +23,8 @@ public class ContactPage extends AppCompatActivity {
 
     private EditText nameEditText, emailEditText, messageEditText;
     private Button sendButton;
-    private static final String EMAIL = "agnesamaniii@@gmail.com"; // Përdorni email-in tuaj Gmail
-    private static final String PASSWORD = "vehisvlelydqwvwp"; // Përdorni fjalëkalimin tuaj ose "App Password"
+    private static final String EMAIL = "detyra2fa@gmail.com"; // Vendosni email-in tuaj
+    private static final String PASSWORD = "fxzweisoojlfmbhc"; // App Password i llogarisë suaj Gmail
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,71 +47,83 @@ public class ContactPage extends AppCompatActivity {
         String email = emailEditText.getText().toString().trim();
         String message = messageEditText.getText().toString().trim();
 
-        // Verifikimi i fusha
+        // Validimi i të dhënave të futur nga përdoruesi
+        if (!validateInputs(name, email, message)) return;
+
+        // Dërgimi i mesazhit me një fije të veçantë
+        new Thread(() -> {
+            boolean isSent = sendEmail(name, email, message);
+            runOnUiThread(() -> {
+                if (isSent) {
+                    Toast.makeText(this, "Mesazhi u dërgua me sukses!", Toast.LENGTH_SHORT).show();
+                    Intent homePageIntent = new Intent(ContactPage.this, HomePage.class);
+                    startActivity(homePageIntent);
+                    finish();
+                } else {
+                    Toast.makeText(this, "Dështoi dërgimi i mesazhit. Ju lutem provoni përsëri.", Toast.LENGTH_SHORT).show();
+                }
+            });
+        }).start();
+    }
+
+    private boolean validateInputs(String name, String email, String message) {
         if (TextUtils.isEmpty(name)) {
             nameEditText.setError("Emri nuk mund të jetë i zbrazët");
-            return;
+            return false;
         }
 
         if (TextUtils.isEmpty(email)) {
             emailEditText.setError("Emaili nuk mund të jetë i zbrazët");
-            return;
+            return false;
+        }
+
+        if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+            emailEditText.setError("Ju lutem shkruani një email të vlefshëm");
+            return false;
         }
 
         if (TextUtils.isEmpty(message)) {
             messageEditText.setError("Mesazhi nuk mund të jetë i zbrazët");
-            return;
+            return false;
         }
 
-        // Verifikimi i email-it
-        if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            emailEditText.setError("Ju lutem shkruani një email të vlefshëm");
-            return;
-        }
-
-        // Krijoni një objekt UserMessage për të ruajtur të dhënat
-        UserMessage userMessage = new UserMessage(name, email, message);
-
-        // Dërgoni mesazhin nëpërmjet Gmail SMTP
-        sendEmail(userMessage);
-
-        // Tregoni mesazh suksesin dhe ridrejtoni përdoruesin në faqen kryesore
-        Toast.makeText(this, "Mesazhi u dërgua me sukses!", Toast.LENGTH_SHORT).show();
-        Intent homePageIntent = new Intent(ContactPage.this, HomePage.class);
-        startActivity(homePageIntent);
-        finish(); // Mbyllim aktivitetin aktual
+        return true;
     }
 
-    private void sendEmail(UserMessage userMessage) {
-        // Vendosni parametrat e Gmail SMTP
-        Properties properties = new Properties();
-        properties.put("mail.smtp.host", "smtp.gmail.com");
-        properties.put("mail.smtp.socketFactory.port", "465");
-        properties.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
-        properties.put("mail.smtp.auth", "true");
-        properties.put("mail.smtp.port", "465");
-
-        // Krijoni një seancë për autentifikim dhe dërgim
-        Session session = Session.getInstance(properties, new javax.mail.Authenticator() {
-            @Override
-            protected PasswordAuthentication getPasswordAuthentication() {
-                return new PasswordAuthentication(EMAIL, PASSWORD); // Vendosni email-in dhe fjalëkalimin tuaj
-            }
-        });
-
+    private boolean sendEmail(String name, String email, String messageContent) {
         try {
-            // Krijoni mesazhin email
-            Message messageObject = new MimeMessage(session);
-            messageObject.setFrom(new InternetAddress(EMAIL));
-            messageObject.setRecipients(Message.RecipientType.TO, InternetAddress.parse("agnesamaniii@gmail.com")); // Vendosni adresën tuaj të emailit të destinacionit
-            messageObject.setSubject("New Contact Message from " + userMessage.getName());
-            messageObject.setText("Name: " + userMessage.getName() + "\nEmail: " + userMessage.getEmail() + "\nMessage: " + userMessage.getMessage());
+            // Vendosni parametrat e Gmail SMTP
+            Properties properties = new Properties();
+            properties.put("mail.smtp.host", "smtp.gmail.com");
+            properties.put("mail.smtp.socketFactory.port", "465");
+            properties.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
+            properties.put("mail.smtp.auth", "true");
+            properties.put("mail.smtp.port", "465");
 
-            // Dërgo emailin
-            Transport.send(messageObject);
+            // Krijoni një seancë për autentifikim dhe dërgim
+            Session session = Session.getInstance(properties, new javax.mail.Authenticator() {
+                @Override
+                protected PasswordAuthentication getPasswordAuthentication() {
+                    return new PasswordAuthentication(EMAIL, PASSWORD);
+                }
+            });
+
+            // Krijoni mesazhin email
+            Message message = new MimeMessage(session);
+            message.setFrom(new InternetAddress(EMAIL));
+            message.setRecipients(Message.RecipientType.TO, InternetAddress.parse("detyra2fa@gmail.com")); // Ndryshoni adresën sipas nevojës
+            message.setSubject("New Contact Message from " + name);
+            message.setText("Name: " + name + "\nEmail: " + email + "\nMessage: " + messageContent);
+
+            // Aktivizoni debug për SMTP
+            session.setDebug(true);
+
+            // Dërgoni email-in
+            Transport.send(message);
+            return true;
         } catch (MessagingException e) {
             e.printStackTrace();
-            Toast.makeText(this, "Ka ndodhur një gabim gjatë dërgimit të mesazhit.", Toast.LENGTH_SHORT).show();
+            return false;
         }
     }
 }
