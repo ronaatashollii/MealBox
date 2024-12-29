@@ -1,108 +1,98 @@
-<?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#EBD9D9"
-    android:padding="16dp">
+    android:background="#000000">
 
+    <!-- Pjesa e titullit FAST FOOD e vendosur afër logos -->
+    <TextView
+        android:id="@+id/fastFoodText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="18dp"
+        android:layout_toEndOf="@id/logoImage"
+    android:layout_marginStart="16dp"
+    android:text="FAST FOOD"
+    android:textColor="#FFD700"
+    android:textSize="36sp"
+    android:textStyle="bold"
+    tools:layout_marginRight="30dp" />
+
+    <!-- Logo e hamburgerit -->
+    <ImageView
+        android:id="@+id/logoImage"
+        android:layout_width="match_parent"
+        android:layout_height="148dp"
+        android:layout_below="@id/fastFoodText"
+        android:layout_marginTop="149dp"
+        android:layout_marginBottom="20dp"
+        android:contentDescription="Burger Logo"
+        android:src="@drawable/img" />
+
+    <!-- Pjesa e përshkrimit -->
+    <TextView
+        android:id="@+id/descriptionText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/logoImage"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="30dp"
+        android:gravity="center"
+        android:text="Flavors You’ll Crave! Enjoy fresh and tasty burgers every day."
+        android:textColor="#FFFFFF"
+        android:textSize="16sp" />
+
+    <!-- LinearLayout për butonat Home, Menu dhe Contact Us -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:gravity="center">
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_below="@id/descriptionText"
+        android:layout_centerHorizontal="true"
+        android:weightSum="3">
 
-        <!-- Logo Image -->
-        <ImageView
-            android:id="@+id/logoImage"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:layout_marginBottom="30dp"
-            android:contentDescription="Restaurant Logo"
-            android:src="@drawable/img" />
-
-        <!-- Welcome Text -->
-        <TextView
-            android:id="@+id/welcomeText"
-            android:layout_width="wrap_content"
+        <Button
+            android:id="@+id/homeButton"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            android:gravity="center"
-            android:text="Savor the Flavor"
-            android:textColor="#000000"
-            android:textSize="26sp"
-            android:textStyle="bold" />
+            android:layout_marginEnd="8dp"
+            android:layout_weight="1"
+            android:backgroundTint="#FFD700"
+            android:text="Home"
+            android:textColor="#FFFFFF" />
 
-        <!-- Short Description -->
-        <TextView
-            android:id="@+id/shortDesc"
-            android:layout_width="wrap_content"
+        <Button
+            android:id="@+id/menuButton"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="40dp"
-            android:gravity="center"
-            android:text="Welcome to Our Cozy Food Paradise!"
-            android:textColor="#444444"
-            android:textSize="18sp" />
+            android:layout_weight="1"
+            android:layout_marginEnd="8dp"
+            android:backgroundTint="#FF4500"
+            android:text="Menu"
+            android:textColor="#FFFFFF" />
 
-        <!-- Navigation buttons -->
-        <LinearLayout
-            android:layout_width="match_parent"
+        <Button
+            android:id="@+id/contactButton"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="horizontal"
-            android:weightSum="3">
-
-            <Button
-                android:id="@+id/homeButton"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="10dp"
-                android:layout_weight="1"
-                android:background="#D4C8E4"
-                android:padding="12dp"
-                android:text="Home"
-                android:textColor="#000000" />
-
-            <Button
-                android:id="@+id/menuButton"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="10dp"
-                android:layout_weight="1"
-                android:background="#6200EE"
-                android:padding="12dp"
-                android:text="Menu"
-                android:textColor="#FFFFFF" />
-
-            <Button
-                android:id="@+id/contactButton"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="#6200EE"
-                android:padding="12dp"
-                android:text="Contact"
-                android:textColor="#FFFFFF" />
-        </LinearLayout>
-
-        <!-- Location Section -->
-        <TextView
-            android:id="@+id/locationText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:gravity="center"
-            android:text="Find Us At:"
-            android:textColor="#000000"
-            android:textSize="20sp" />
-
-        <TextView
-            android:id="@+id/addressText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:gravity="center"
-            android:text="123 Gourmet Street, Food City"
-            android:textColor="#555555"
-            android:textSize="16sp" />
+            android:layout_weight="1"
+            android:backgroundTint="#32CD32"
+            android:text="Contact Us"
+            android:textColor="#FFFFFF" />
     </LinearLayout>
-</ScrollView>
+
+    <!-- Butoni i logout-it në fund të ekranit -->
+    <ImageView
+        android:id="@+id/logoutButton"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/img_3"
+        android:tint="#FFFFFF"
+    android:layout_alignParentBottom="true"
+    android:layout_alignParentEnd="true"
+    android:layout_marginBottom="20dp"
+    android:layout_marginEnd="20dp" />
+
+</RelativeLayout>

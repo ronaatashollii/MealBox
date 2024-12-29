@@ -9,21 +9,36 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#DB9A9A"
+        android:background="#9DA9A9"
         android:gravity="center"
         android:orientation="vertical"
         android:padding="16dp">
 
+        <!-- Button Close (X) në anën e djathtë, lart -->
+        <ImageButton
+            android:id="@+id/closeButton"
+            android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:src="@android:drawable/ic_menu_close_clear_cancel"
+        android:contentDescription="Close"
+        android:background="@android:color/transparent"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        app:tint="#FF6200EE"
+        android:layout_alignParentEnd="true"/>
+
+
         <!-- Logo Image -->
+
+        <!-- Sign Up Title -->
         <ImageView
             android:id="@+id/imageView2"
             android:layout_width="100dp"
             android:layout_height="80dp"
-            android:layout_marginTop="150dp"
-            android:layout_marginBottom="10dp"
-            app:srcCompat="@drawable/img" />
+            android:layout_marginTop="50dp"
+        android:layout_marginBottom="10dp"
+        app:srcCompat="@drawable/img" />
 
-        <!-- Sign Up Title -->
         <TextView
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
@@ -89,41 +104,28 @@
             android:inputType="textPassword"
             android:textColor="#000000" />
 
-        <!-- LinearLayout for buttons -->
+        <!-- LinearLayout for the Sign Up Button -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:gravity="center"
-            android:orientation="horizontal">
+            android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:orientation="horizontal">
 
-            <!-- Sign Up Button -->
-            <Button
-                android:id="@+id/signup"
-                style="@style/CustomButtonStyle"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:layout_weight="1"
-                android:background="#FF6200EE"
-                android:text="Sign Up"
-                android:textColor="#FFFFFF"
-                android:textSize="16sp" />
-
-            <!-- Back to Login Button -->
-            <Button
-                style="@style/CustomButtonStyle"
-                android:id="@+id/loginButton"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Login"
-                android:textColor="#FFFFFF"
-            android:textSize="16sp"
-            android:background="#7A2626"
-            />
-
-        </LinearLayout>
-
+        <!-- Sign Up Button -->
+        <Button
+            android:id="@+id/signup"
+            style="@style/CustomButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_weight="1"
+            android:background="#FF6200EE"
+            android:text="Sign Up"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp" />
     </LinearLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+</LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>

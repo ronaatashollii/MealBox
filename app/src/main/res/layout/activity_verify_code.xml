@@ -26,7 +26,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Enter 6-digit code"
-        android:inputType="number"
+        android:inputType="text"
         android:gravity="center"
         android:padding="10dp"
         android:background="@drawable/rounded_edit_text"

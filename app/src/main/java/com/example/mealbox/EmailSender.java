@@ -1,4 +1,5 @@
 package com.example.mealbox;
+
 import java.util.Properties;
 import javax.mail.Authenticator;
 import javax.mail.Message;
@@ -10,29 +11,23 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
 public class EmailSender {
-    private static String adminEmail = "agnesamaniii@gmail.com"; // replace this with your email
+    private static String adminEmail = "agnesamaniii@gmail.com"; // email admini
+    private static String appPassword = "vehisvlelydqwvwp"; // password aplikacioni për Gmail
 
-    private static String AppPassword = "vehisvlelydqwvwp"; // generate an app password with google
-
-
-
-
-
-    public static void sendCode(String receiverEmail, String sixDigitCode) throws MessagingException{
+    // Funksioni për dërgimin e kodit
+    public static void sendCode(String receiverEmail, String sixDigitCode) throws MessagingException {
         Properties props = new Properties();
         props.put("mail.smtp.host", "smtp.gmail.com");
         props.put("mail.smtp.port", "587");
         props.put("mail.smtp.auth", "true");
         props.put("mail.smtp.starttls.enable", "true");
 
-
         Session session = Session.getInstance(props, new Authenticator() {
             @Override
             protected PasswordAuthentication getPasswordAuthentication() {
-                return new PasswordAuthentication(adminEmail, AppPassword);
+                return new PasswordAuthentication(adminEmail, appPassword);
             }
         });
-
 
         MimeMessage message = new MimeMessage(session);
         message.setFrom(new InternetAddress(adminEmail));
@@ -41,8 +36,5 @@ public class EmailSender {
         message.setText("This is your OTP Code: " + sixDigitCode);
 
         Transport.send(message);
-
     }
-
-
 }
