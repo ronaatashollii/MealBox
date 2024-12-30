@@ -24,7 +24,7 @@
         android:id="@+id/orderButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="order"
+        android:text="Order"
         android:backgroundTint="@android:color/holo_green_dark"
         android:textColor="@android:color/white"
         android:layout_marginTop="8dp" />
@@ -34,7 +34,7 @@
         android:id="@+id/backToHomeButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Back to Home"
+        android:text="Back to Menu"
         android:backgroundTint="@android:color/holo_blue_dark"
         android:textColor="@android:color/white"
         android:layout_marginTop="16dp" />
