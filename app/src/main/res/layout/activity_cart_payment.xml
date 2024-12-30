@@ -1,16 +1,10 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
+    android:background="#DB9A9A"
+    android:gravity="center"
     android:orientation="vertical"
     android:padding="16dp">
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Enter Card Details"
-        android:textSize="18sp"
-        android:gravity="center"
-        android:paddingBottom="16dp" />
 
     <EditText
         android:id="@+id/cardNumberEditText"
@@ -41,7 +35,7 @@
     <Button
         android:id="@+id/confirmPaymentButton"
         android:layout_width="match_parent"
-        android:layout_height="48dp"
+        android:layout_height="wrap_content"
         android:text="Confirm Payment"
         android:layout_marginTop="16dp"
         android:backgroundTint="@android:color/holo_blue_dark"
