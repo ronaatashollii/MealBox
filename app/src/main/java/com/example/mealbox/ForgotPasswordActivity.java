@@ -28,20 +28,20 @@ public class ForgotPasswordActivity extends AppCompatActivity {
             if (TextUtils.isEmpty(email)) {
                 Toast.makeText(ForgotPasswordActivity.this, "Please enter your email", Toast.LENGTH_SHORT).show();
             } else {
-                // Simulo dërgimin e kodit
+
                 sendVerificationCode(email);
 
-                // Hap faqen e konfirmimit
+
                 Intent intent = new Intent(ForgotPasswordActivity.this, VerifyCodeActivity.class);
-                intent.putExtra("USER_EMAIL", email); // Dërgo email-in në VerifyCodeActivity
+                intent.putExtra("USER_EMAIL", email);
                 startActivity(intent);
             }
         });
     }
 
-    // Funksioni për dërgimin e kodit të verifikimit (Simulim)
+
     private void sendVerificationCode(String email) {
-        // Mund të përdorësh Firebase ose ndonjë API tjetër për dërgimin e kodit
+
         Toast.makeText(this, "Verification code sent to " + email, Toast.LENGTH_SHORT).show();
     }
 }

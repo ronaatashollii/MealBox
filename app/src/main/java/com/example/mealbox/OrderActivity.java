@@ -22,7 +22,7 @@ public class OrderActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order);
 
-        // Initialize components
+
         paymentMethodGroup = findViewById(R.id.paymentMethodGroup);
         cardPaymentButton = findViewById(R.id.cardPaymentButton);
         cashPaymentButton = findViewById(R.id.cashPaymentButton);
@@ -31,22 +31,22 @@ public class OrderActivity extends AppCompatActivity {
         phoneEditText = findViewById(R.id.phoneEditText);
         confirmOrderButton = findViewById(R.id.confirmOrderButton);
 
-        // Listener for RadioGroup
+
         paymentMethodGroup.setOnCheckedChangeListener((group, checkedId) -> {
             if (checkedId == R.id.cardPaymentButton) {
-                // Navigate to CartPaymentActivity when card payment is selected
+
                 Intent intent = new Intent(OrderActivity.this, CartPaymentActivity.class);
                 startActivity(intent);
             }
         });
 
-        // Confirm order button listener
+
         confirmOrderButton.setOnClickListener(v -> {
             String name = nameEditText.getText().toString().trim();
             String address = addressEditText.getText().toString().trim();
             String phone = phoneEditText.getText().toString().trim();
 
-            // Validate user details
+
             if (name.isEmpty() || address.isEmpty() || phone.isEmpty()) {
                 Toast.makeText(OrderActivity.this, "Please fill all details to confirm the order!", Toast.LENGTH_SHORT).show();
                 return;

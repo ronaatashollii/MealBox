@@ -11,10 +11,10 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
 public class EmailSender {
-    private static String adminEmail = "agnesamaniii@gmail.com"; // email admini
-    private static String appPassword = "vehisvlelydqwvwp"; // password aplikacioni për Gmail
+    private static String adminEmail = "agnesamaniii@gmail.com";
+    private static String appPassword = "vehisvlelydqwvwp";
 
-    // Funksioni për dërgimin e kodit
+
     public static void sendCode(String receiverEmail, String sixDigitCode) throws MessagingException {
         Properties props = new Properties();
         props.put("mail.smtp.host", "smtp.gmail.com");

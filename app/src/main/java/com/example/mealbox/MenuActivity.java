@@ -15,9 +15,9 @@ import java.util.Map;
 
 public class MenuActivity extends AppCompatActivity {
 
-    private Map<Integer, String> buttonToProductMap; // Map buttons to product names
-    private Map<String, ProductDetails> productDetailsMap; // Store product details
-    private Map<String, Integer> productImageMap; // Store product image resources
+    private Map<Integer, String> buttonToProductMap;
+    private Map<String, ProductDetails> productDetailsMap;
+    private Map<String, Integer> productImageMap;
     private ImageButton viewCartButton;
 
     @Override

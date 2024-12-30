@@ -28,19 +28,17 @@ public class CartPaymentActivity extends AppCompatActivity {
             String expiryDate = expiryDateEditText.getText().toString().trim();
             String cvv = cvvEditText.getText().toString().trim();
 
-            // Validate input fields
+
             if (cardNumber.isEmpty() || expiryDate.isEmpty() || cvv.isEmpty()) {
                 Toast.makeText(CartPaymentActivity.this, "Please fill in all card details!", Toast.LENGTH_SHORT).show();
             } else {
-                // Perform payment processing logic here if necessary
 
-                // Show success message
                 Toast.makeText(CartPaymentActivity.this, "Order placed successfully!", Toast.LENGTH_SHORT).show();
 
-                // Go to HomeActivity after successful payment
+
                 Intent intent = new Intent(CartPaymentActivity.this, HomePage.class);
                 startActivity(intent);
-                finish(); // Finish CartPaymentActivity to prevent user from going back to it
+                finish();
             }
         });
     }

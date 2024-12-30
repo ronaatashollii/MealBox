@@ -37,7 +37,7 @@ public class HomePage extends AppCompatActivity {
         showWelcomeNotification();
         showLoginMessage();
         setupNavigationButtons();
-        setupLogoutButton(); // Kalloni funksionin për butonin e logout-it
+        setupLogoutButton();
     }
 
     private void showWelcomeNotification() {
@@ -49,14 +49,14 @@ public class HomePage extends AppCompatActivity {
                 .setContentText("Get ready for the ultimate burger experience!")
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT)
                 .setAutoCancel(true)
-                .setSound(soundUri);  // Zhurma në notifikim
+                .setSound(soundUri);
 
         NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
         notificationManager.notify(1, builder.build());
     }
 
     private void showLoginMessage() {
-        // Shfaqim një mesazh Toast pas hapjes së HomePage
+
         Toast.makeText(HomePage.this, "Welcome to MealBox! Enjoy your experience.", Toast.LENGTH_LONG).show();
     }
 
@@ -84,10 +84,10 @@ public class HomePage extends AppCompatActivity {
     private void setupLogoutButton() {
         ImageView logoutButton = findViewById(R.id.logoutButton);
         logoutButton.setOnClickListener(v -> {
-            // Kaloni në LoginActivity kur të klikoni logout
+
             Intent intent = new Intent(HomePage.this, LoginActivity.class);
             startActivity(intent);
-            finish(); // Mbyllim aktivitetin aktual (HomePage)
+            finish();
         });
     }
 }
