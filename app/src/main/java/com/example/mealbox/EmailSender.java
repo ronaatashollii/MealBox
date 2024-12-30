@@ -12,7 +12,7 @@ import javax.mail.internet.MimeMessage;
 
 public class EmailSender {
     private static String adminEmail = "agnesamaniii@gmail.com";
-    private static String appPassword = "vehisvlelydqwvwp";
+    private static String appPassword = "";
 
 
     public static void sendCode(String receiverEmail, String sixDigitCode) throws MessagingException {
