@@ -14,6 +14,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class MenuActivity extends AppCompatActivity {
+
     private Map<Integer, String> buttonToProductMap; // Map buttons to product names
     private Map<String, ProductDetails> productDetailsMap; // Store product details
     private Map<String, Integer> productImageMap; // Store product image resources
@@ -24,18 +25,32 @@ public class MenuActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
 
+
         viewCartButton = findViewById(R.id.viewButton);
 
-        viewCartButton.setOnClickListener(v -> {
-            Intent intent = new Intent(MenuActivity.this, CartActivity.class);
-            startActivity(intent);
-        });
 
         buttonToProductMap = new HashMap<>();
         productDetailsMap = new HashMap<>();
         productImageMap = new HashMap<>();
 
-        // Button IDs and corresponding products
+
+        initializeProductData();
+
+
+        setupNavigationButtons();
+
+
+        setupProductButtons();
+
+
+        viewCartButton.setOnClickListener(v -> {
+            Intent intent = new Intent(MenuActivity.this, CartActivity.class);
+            startActivity(intent);
+        });
+    }
+
+    private void initializeProductData() {
+
         int[] buttonIds = {
                 R.id.myButton1, R.id.myButton2, R.id.myButton3, R.id.myButton4,
                 R.id.myButton5, R.id.myButton6, R.id.myButton7, R.id.myButton8,
@@ -48,7 +63,11 @@ public class MenuActivity extends AppCompatActivity {
                 "Mega Cheese Burger", "Golden Burger"
         };
 
-        // Fill product image map
+        double[] productPrices = {
+                5.00, 3.50,7.00, 4.50, 2.00, 2,50, 3.00,4.00, 5.50, 6.00
+        };
+
+
         productImageMap.put("Chicken Burger", R.drawable.chickenburger);
         productImageMap.put("BBQ Burger", R.drawable.bbq);
         productImageMap.put("Beef Burger", R.drawable.beef);
@@ -60,40 +79,47 @@ public class MenuActivity extends AppCompatActivity {
         productImageMap.put("Mega Cheese Burger", R.drawable.megacheeseburger);
         productImageMap.put("Golden Burger", R.drawable.goldenburger);
 
-        // Map buttons to products and set product details
         for (int i = 0; i < buttonIds.length; i++) {
-            buttonToProductMap.put(buttonIds[i], productNames[i]);
-            productDetailsMap.put(productNames[i], new ProductDetails(
-                    productNames[i] + " Description",
-                    "Ingredients for " + productNames[i]
+            String productName = productNames[i];
+            double price = productPrices[i];
+            buttonToProductMap.put(buttonIds[i], productName);
+            productDetailsMap.put(productName, new ProductDetails(
+                    productName + " is a delicious meal.",
+                    "Ingredients: Custom recipe for " + productName,
+                    price
             ));
         }
+    }
 
-        // Set listeners for buttons
-        for (int id : buttonIds) {
-            Button button = findViewById(id);
+    private void setupProductButtons() {
+        for (Map.Entry<Integer, String> entry : buttonToProductMap.entrySet()) {
+            int buttonId = entry.getKey();
+            String productName = entry.getValue();
+
+            Button button = findViewById(buttonId);
             if (button != null) {
-                button.setOnClickListener(view -> {
-                    String productName = buttonToProductMap.get(id);
-                    if (productName != null) {
-                        Integer imageRes = productImageMap.get(productName);
-                        if (imageRes != null) {
-                            CartManager.addCartItem(new CartItem(productName, 9.99, imageRes));
-                            Log.d("MenuActivity", productName + " added to cart.");
-                        } else {
-                            Log.e("MenuActivity", "Image resource not found for: " + productName);
-                        }
+                button.setOnClickListener(v -> {
+                    ProductDetails details = productDetailsMap.get(productName);
+                    Integer imageRes = productImageMap.get(productName);
+
+                    if (details != null && imageRes != null) {
+                        CartItem cartItem = new CartItem(
+                                productName,
+                                details.getPrice(),
+                                imageRes,
+                                details.getDescription(),
+                                details.getIngredients()
+                        );
+                        CartManager.addCartItem(cartItem);
+                        Log.d("MenuActivity", productName + " added to cart.");
                     } else {
-                        Log.e("MenuActivity", "Unknown product for button ID: " + id);
+                        Log.e("MenuActivity", "Error: Missing details or image for " + productName);
                     }
                 });
             } else {
-                Log.e("MenuActivity", "Button with ID " + id + " not found in layout.");
+                Log.e("MenuActivity", "Button with ID " + buttonId + " not found in layout.");
             }
         }
-
-        // Setup navigation buttons
-        setupNavigationButtons();
     }
 
     private void setupNavigationButtons() {
@@ -117,45 +143,16 @@ public class MenuActivity extends AppCompatActivity {
         });
     }
 
-    private class ButtonClickListener implements View.OnClickListener {
-        @Override
-        public void onClick(View view) {
-            int buttonId = view.getId();
-            String productName = buttonToProductMap.get(buttonId);
-
-            if (productName != null) {
-                ProductDetails details = productDetailsMap.get(productName);
-
-                if (details != null) {
-                    // Show a dialog with product details
-                    new AlertDialog.Builder(MenuActivity.this)
-                            .setTitle(productName)
-                            .setMessage("Description: " + details.getDescription() +
-                                    "\n\nIngredients: " + details.getIngredients())
-                            .setPositiveButton("OK", null)
-                            .show();
-                } else {
-                    // If no details are found, show an error
-                    new AlertDialog.Builder(MenuActivity.this)
-                            .setTitle("Error")
-                            .setMessage("Details for " + productName + " not found.")
-                            .setPositiveButton("OK", null)
-                            .show();
-                }
-            } else {
-                Log.e("MenuActivity", "No product mapped for button ID: " + buttonId);
-            }
-        }
-    }
-
     // Inner class for product details
     private static class ProductDetails {
         private final String description;
         private final String ingredients;
+        private final double price;
 
-        public ProductDetails(String description, String ingredients) {
+        public ProductDetails(String description, String ingredients, double price) {
             this.description = description;
             this.ingredients = ingredients;
+            this.price = price;
         }
 
         public String getDescription() {
@@ -164,6 +161,10 @@ public class MenuActivity extends AppCompatActivity {
 
         public String getIngredients() {
             return ingredients;
+        }
+
+        public double getPrice() {
+            return price;
         }
     }
 }
