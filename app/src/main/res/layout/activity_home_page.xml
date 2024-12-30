@@ -1,4 +1,5 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -11,10 +12,10 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="48dp"
-    android:text="FAST FOOD"
-    android:textColor="#FFD700"
-    android:textSize="36sp"
-    android:textStyle="bold" />
+        android:text="FAST FOOD"
+        android:textColor="#FFD700"
+        android:textSize="36sp"
+        android:textStyle="bold" />
 
     <!-- Logo e hamburgerit -->
     <ImageView
@@ -24,8 +25,8 @@
         android:layout_below="@id/fastFoodText"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="32dp"
-    android:contentDescription="Burger Logo"
-    android:src="@drawable/img" />
+        android:contentDescription="Burger Logo"
+        android:src="@drawable/img" />
 
     <!-- Teksti i përshkrimit -->
     <TextView
@@ -34,11 +35,11 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/logoImage"
         android:layout_marginTop="32dp"
-    android:layout_marginHorizontal="16dp"
-    android:gravity="center"
-    android:text="Flavors You’ll Crave! Enjoy fresh and tasty burgers every day."
-    android:textColor="#FFFFFF"
-    android:textSize="16sp" />
+        android:layout_marginHorizontal="16dp"
+        android:gravity="center"
+        android:text="Flavors You’ll Crave! Enjoy fresh and tasty burgers every day."
+        android:textColor="#FFFFFF"
+        android:textSize="16sp" />
 
     <!-- LinearLayout për butonat -->
     <LinearLayout
@@ -47,40 +48,40 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/descriptionText"
         android:layout_marginTop="40dp"
-    android:orientation="horizontal"
-    android:gravity="center"
-    android:weightSum="3">
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:weightSum="3">
 
-    <Button
-        android:id="@+id/homeButton"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:layout_marginHorizontal="8dp"
-        android:backgroundTint="#FFD700"
-        android:text="Home"
-        android:textColor="#FFFFFF" />
+        <Button
+            android:id="@+id/homeButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginHorizontal="8dp"
+            android:backgroundTint="#FFD700"
+            android:text="Home"
+            android:textColor="#FFFFFF" />
 
-    <Button
-        android:id="@+id/menuButton"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:layout_marginHorizontal="8dp"
-        android:backgroundTint="#FF4500"
-        android:text="Menu"
-        android:textColor="#FFFFFF" />
+        <Button
+            android:id="@+id/menuButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginHorizontal="8dp"
+            android:backgroundTint="#FF4500"
+            android:text="Menu"
+            android:textColor="#FFFFFF" />
 
-    <Button
-        android:id="@+id/contactButton"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:layout_marginHorizontal="8dp"
-        android:backgroundTint="#32CD32"
-        android:text="Contact Us"
-        android:textColor="#FFFFFF" />
-</LinearLayout>
+        <Button
+            android:id="@+id/contactButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginHorizontal="8dp"
+            android:backgroundTint="#32CD32"
+            android:text="Contact Us"
+            android:textColor="#FFFFFF" />
+    </LinearLayout>
 
     <!-- Ikona e logout-it në fund të ekranit -->
     <ImageView
@@ -92,6 +93,6 @@
         android:layout_marginBottom="16dp"
         android:layout_marginEnd="16dp"
         android:src="@drawable/img_3"
-        android:tint="#FFFFFF" />
+        app:tint="#FFFFFF" />
 
     </RelativeLayout>
