@@ -57,17 +57,19 @@ public class MenuActivity extends AppCompatActivity {
                 R.id.myButton9, R.id.myButton10
         };
 
+
         String[] productNames = {
                 "Chicken Burger", "BBQ Burger", "Beef Burger", "Chicken Sandwich",
                 "Chicken Spinner", "Crispy Onion Burger", "Double Crispy Onion", "Giant Beef",
                 "Mega Cheese Burger", "Golden Burger"
         };
 
+
         double[] productPrices = {
-                5.00, 3.50,7.00, 4.50, 2.00, 2,50, 3.00,4.00, 5.50, 6.00
+                5.00, 3.50, 7.00, 4.50, 2.00, 2.50, 3.00, 4.00, 5.50, 6.00
         };
 
-
+        // Harta për ruajtjen e pamjeve të produkteve
         productImageMap.put("Chicken Burger", R.drawable.chickenburger);
         productImageMap.put("BBQ Burger", R.drawable.bbq);
         productImageMap.put("Beef Burger", R.drawable.beef);
@@ -78,6 +80,7 @@ public class MenuActivity extends AppCompatActivity {
         productImageMap.put("Giant Beef", R.drawable.giantbeef);
         productImageMap.put("Mega Cheese Burger", R.drawable.megacheeseburger);
         productImageMap.put("Golden Burger", R.drawable.goldenburger);
+
 
         for (int i = 0; i < buttonIds.length; i++) {
             String productName = productNames[i];
@@ -99,10 +102,13 @@ public class MenuActivity extends AppCompatActivity {
             Button button = findViewById(buttonId);
             if (button != null) {
                 button.setOnClickListener(v -> {
+
                     ProductDetails details = productDetailsMap.get(productName);
                     Integer imageRes = productImageMap.get(productName);
 
+
                     if (details != null && imageRes != null) {
+
                         CartItem cartItem = new CartItem(
                                 productName,
                                 details.getPrice(),
@@ -114,10 +120,12 @@ public class MenuActivity extends AppCompatActivity {
                         Log.d("MenuActivity", productName + " added to cart.");
                     } else {
                         Log.e("MenuActivity", "Error: Missing details or image for " + productName);
+                        showErrorDialog("Error: Missing details for " + productName);
                     }
                 });
             } else {
                 Log.e("MenuActivity", "Button with ID " + buttonId + " not found in layout.");
+                showErrorDialog("Button ID not found: " + buttonId);
             }
         }
     }
@@ -143,7 +151,14 @@ public class MenuActivity extends AppCompatActivity {
         });
     }
 
-    // Inner class for product details
+    private void showErrorDialog(String message) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(MenuActivity.this);
+        builder.setMessage(message)
+                .setPositiveButton("OK", null);
+        builder.create().show();
+    }
+
+
     private static class ProductDetails {
         private final String description;
         private final String ingredients;

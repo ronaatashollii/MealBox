@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
@@ -16,6 +17,7 @@ public class OrderActivity extends AppCompatActivity {
     private RadioButton cardPaymentButton, cashPaymentButton;
     private EditText nameEditText, addressEditText, phoneEditText;
     private Button confirmOrderButton;
+    private ImageButton closeButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +25,7 @@ public class OrderActivity extends AppCompatActivity {
         setContentView(R.layout.activity_order);
 
 
+        closeButton = findViewById(R.id.closeButton); // Butoni X
         paymentMethodGroup = findViewById(R.id.paymentMethodGroup);
         cardPaymentButton = findViewById(R.id.cardPaymentButton);
         cashPaymentButton = findViewById(R.id.cashPaymentButton);
@@ -32,9 +35,15 @@ public class OrderActivity extends AppCompatActivity {
         confirmOrderButton = findViewById(R.id.confirmOrderButton);
 
 
+        closeButton.setOnClickListener(v -> {
+            Intent intent = new Intent(OrderActivity.this, MenuActivity.class);
+            startActivity(intent);
+            finish();
+        });
+
+
         paymentMethodGroup.setOnCheckedChangeListener((group, checkedId) -> {
             if (checkedId == R.id.cardPaymentButton) {
-
                 Intent intent = new Intent(OrderActivity.this, CartPaymentActivity.class);
                 startActivity(intent);
             }
@@ -52,14 +61,21 @@ public class OrderActivity extends AppCompatActivity {
                 return;
             }
 
+
             int selectedPaymentId = paymentMethodGroup.getCheckedRadioButtonId();
             if (selectedPaymentId == -1) {
                 Toast.makeText(OrderActivity.this, "Please select a payment method!", Toast.LENGTH_SHORT).show();
                 return;
             }
 
+
             if (selectedPaymentId == R.id.cashPaymentButton) {
                 Toast.makeText(OrderActivity.this, "Order confirmed with Cash Payment!", Toast.LENGTH_SHORT).show();
+
+
+                Intent intent = new Intent(OrderActivity.this, MenuActivity.class);
+                startActivity(intent);
+                finish();
             }
         });
     }

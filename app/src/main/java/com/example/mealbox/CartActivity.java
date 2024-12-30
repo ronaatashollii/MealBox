@@ -8,10 +8,11 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
-import androidx.appcompat.app.AlertDialog;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.List;
+
 public class CartActivity extends AppCompatActivity {
 
     private ListView cartListView;
@@ -32,10 +33,10 @@ public class CartActivity extends AppCompatActivity {
         orderButton = findViewById(R.id.orderButton);
         totalPriceTextView = findViewById(R.id.totalPriceTextView);
 
-        DBHelper dbHelper = new DBHelper(this);
-        SQLiteDatabase db = dbHelper.getReadableDatabase();
 
-        Log.d("Database", "Database path: " + db.getPath());
+        dbHelper = new DBHelper(this);
+
+
         cartItems = CartManager.getCartItems();
 
 
@@ -64,7 +65,7 @@ public class CartActivity extends AppCompatActivity {
     private void updateTotalPrice() {
         double total = 0.0;
         for (CartItem item : cartItems) {
-            total += item.getPrice(); // Krijimi i totalit të çmimit
+            total += item.getPrice();
         }
         totalPriceTextView.setText(String.format("Total Price: $%.2f", total));
     }
@@ -86,12 +87,14 @@ public class CartActivity extends AppCompatActivity {
 
 
             if (result) {
-                Toast.makeText(this, "Order placed successfully!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Get Ready To Order!", Toast.LENGTH_SHORT).show();
+
 
                 Intent intent = new Intent(CartActivity.this, OrderActivity.class);
                 startActivity(intent);
                 finish();
             } else {
+
                 Toast.makeText(this, "Failed to place order.", Toast.LENGTH_SHORT).show();
             }
         }

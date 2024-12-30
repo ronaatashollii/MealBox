@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="#000000">
 
-    <!-- Teksti i titullit -->
+
     <TextView
         android:id="@+id/fastFoodText"
         android:layout_width="wrap_content"
@@ -17,7 +17,7 @@
         android:textSize="36sp"
         android:textStyle="bold" />
 
-    <!-- Logo e hamburgerit -->
+
     <ImageView
         android:id="@+id/logoImage"
         android:layout_width="150dp"
@@ -28,7 +28,7 @@
         android:contentDescription="Burger Logo"
         android:src="@drawable/img" />
 
-    <!-- Teksti i përshkrimit -->
+
     <TextView
         android:id="@+id/descriptionText"
         android:layout_width="match_parent"
@@ -41,7 +41,7 @@
         android:textColor="#FFFFFF"
         android:textSize="16sp" />
 
-    <!-- LinearLayout për butonat -->
+
     <LinearLayout
         android:id="@+id/buttonLayout"
         android:layout_width="match_parent"
@@ -83,7 +83,7 @@
             android:textColor="#FFFFFF" />
     </LinearLayout>
 
-    <!-- Ikona e logout-it në fund të ekranit -->
+
     <ImageView
         android:id="@+id/logoutButton"
         android:layout_width="40dp"

@@ -8,7 +8,7 @@
     android:gravity="center"
     android:background="#FFF8E1">
 
-    <!-- Header Text -->
+
     <TextView
         android:id="@+id/verifyCodeHeader"
         android:layout_width="wrap_content"
@@ -20,7 +20,7 @@
         android:layout_marginBottom="20dp"
         android:gravity="center" />
 
-    <!-- Input Field for OTP -->
+
     <EditText
         android:id="@+id/codeEditText"
         android:layout_width="match_parent"
@@ -34,7 +34,7 @@
         android:layout_marginBottom="20dp"
         android:minHeight="48dp" />
 
-    <!-- Verify Button -->
+
     <Button
         android:id="@+id/verifyButton"
         android:layout_width="match_parent"
@@ -46,7 +46,7 @@
         android:layout_marginBottom="10dp"
         android:layout_marginTop="10dp" />
 
-    <!-- Resend Code Text -->
+
     <TextView
         android:id="@+id/resentCode"
         android:layout_width="wrap_content"

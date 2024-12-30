@@ -1,8 +1,10 @@
 package com.example.mealbox;
+
 import android.Manifest;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.media.RingtoneManager;
 import android.net.Uri;
@@ -21,24 +23,24 @@ import androidx.core.app.NotificationManagerCompat;
 public class HomePage extends AppCompatActivity {
 
     private static final String CHANNEL_ID = "welcome_channel";
-    private static final int NOTIFICATION_PERMISSION_CODE = 1001; // Permission request code
+    private static final int NOTIFICATION_PERMISSION_CODE = 1001;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
 
-        // Create Notification Channel
+
         createNotificationChannel();
 
-        // Check permission before showing the notification
+
         if (checkNotificationPermission()) {
-            showWelcomeNotification(); // Display notification if permission is granted
+            showWelcomeNotification();
         } else {
-            requestNotificationPermission(); // Request permission if not granted
+            requestNotificationPermission();
         }
 
-        showLoginMessage();
+
         setupNavigationButtons();
         setupLogoutButton();
     }
@@ -70,7 +72,6 @@ public class HomePage extends AppCompatActivity {
         return true;
     }
 
-
     private void requestNotificationPermission() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) { // Android 13+
             ActivityCompat.requestPermissions(
@@ -81,13 +82,13 @@ public class HomePage extends AppCompatActivity {
         }
     }
 
-    // Handle permission request result
+
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if (requestCode == NOTIFICATION_PERMISSION_CODE) {
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                showWelcomeNotification(); // Permission granted—show notification
+                showWelcomeNotification();
             } else {
                 Toast.makeText(this, "Notification permission denied!", Toast.LENGTH_SHORT).show();
             }
@@ -95,28 +96,38 @@ public class HomePage extends AppCompatActivity {
     }
 
     private void showWelcomeNotification() {
-        Uri soundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+        SharedPreferences preferences = getSharedPreferences("prefs", MODE_PRIVATE);
+        boolean isNotificationShown = preferences.getBoolean("notification_shown", false);
 
-        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, CHANNEL_ID)
-                .setSmallIcon(R.drawable.img_2) // Replace with valid drawable resource
-                .setContentTitle("Welcome to MealBox!")
-                .setContentText("Get ready for the ultimate burger experience!")
-                .setPriority(NotificationCompat.PRIORITY_HIGH) // High priority
-                .setAutoCancel(true) // Dismiss on tap
-                .setSound(soundUri); // Attach sound
 
-        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
+        if (!isNotificationShown) {
+            Uri soundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
 
-        try {
-            notificationManager.notify(1, builder.build());
-        } catch (SecurityException e) {
-            Toast.makeText(this, "Permission denied for notifications!", Toast.LENGTH_SHORT).show();
+            NotificationCompat.Builder builder = new NotificationCompat.Builder(this, CHANNEL_ID)
+                    .setSmallIcon(R.drawable.img_2)
+                    .setContentTitle("Welcome to MealBox!")
+                    .setContentText("Get ready for the ultimate burger experience!")
+                    .setPriority(NotificationCompat.PRIORITY_HIGH)
+                    .setAutoCancel(true)
+                    .setSound(soundUri);
+
+            NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
+
+            try {
+                notificationManager.notify(1, builder.build());
+
+
+                SharedPreferences.Editor editor = preferences.edit();
+                editor.putBoolean("notification_shown", true);
+                editor.apply();
+
+            } catch (SecurityException e) {
+                Toast.makeText(this, "Permission denied for notifications!", Toast.LENGTH_SHORT).show();
+            }
         }
     }
 
-    private void showLoginMessage() {
-        Toast.makeText(HomePage.this, "Welcome to MealBox! Enjoy your experience.", Toast.LENGTH_LONG).show();
-    }
+
 
     private void setupNavigationButtons() {
         Button homeButton = findViewById(R.id.homeButton);
@@ -142,6 +153,13 @@ public class HomePage extends AppCompatActivity {
     private void setupLogoutButton() {
         ImageView logoutButton = findViewById(R.id.logoutButton);
         logoutButton.setOnClickListener(v -> {
+
+            SharedPreferences preferences = getSharedPreferences("prefs", MODE_PRIVATE);
+            SharedPreferences.Editor editor = preferences.edit();
+            editor.putBoolean("notification_shown", false);
+            editor.apply();
+
+
             Intent intent = new Intent(HomePage.this, LoginActivity.class);
             startActivity(intent);
             finish();
