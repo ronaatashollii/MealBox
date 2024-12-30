@@ -97,10 +97,11 @@ public class SignUpActivity extends AppCompatActivity {
         }
 
 
-        if (TextUtils.isEmpty(phone) || !phone.matches("\\d{10,15}")) {
-            phoneEditText.setError("Enter a valid phone number (10-15 digits).");
+        if (TextUtils.isEmpty(phone) || !phone.matches("^(\\+383\\d{7}|0\\d{8})$")) {
+            phoneEditText.setError("Enter a valid phone number.");
             return false;
         }
+
 
 
         if (TextUtils.isEmpty(password) || !isValidPassword(password)) {
