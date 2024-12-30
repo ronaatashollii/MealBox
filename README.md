@@ -46,7 +46,7 @@ MealBox is an Android application designed to streamline the food ordering proce
 
 - orders: Stores order details including order ID, product count, and total amount.
 
-- cart: Stores temporary cart items for active users.
+- prodicts: Stores product items available.
 
 # How to Run the Project
 
